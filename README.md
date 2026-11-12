@@ -66,52 +66,24 @@ Since August 2026 I have been launching Shopify shops on small European markets,
 
 *Private work — products, suppliers, pricing and the marketing playbook are intentionally left out. The diagrams below show how the work is organised and checked.*
 
-**How the agents are organised** — the steps I never delegate are in green.
+In green, the steps I never delegate.
 
-```mermaid
-flowchart LR
-    P["Me<br/>products, markets, pricing,<br/>specs and trade-offs"]:::mine
-    P -->|written brief and rules| C["Coding agents<br/>Claude Code, Codex<br/>theme code"]
-    P -->|art direction| V["Image and video models<br/>ad visuals"]
-    C --> R{"I review<br/>and approve"}:::mine
-    V --> E{"I select<br/>and edit"}:::mine
-    R -->|send back| C
-    E -->|send back| V
-    R -->|approved| S[("Live shop")]
-    E -->|approved| A["Ads"]
-    K["Credentials, bank details,<br/>identity"]:::mine -.->|never handed to an agent| S
-    classDef mine fill:#1d6b58,stroke:#1d6b58,color:#ffffff
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/ecommerce/agents-dark.svg">
+  <img src="./assets/ecommerce/agents-light.svg" width="600" alt="Who does what: I set products, markets, pricing and specs; coding agents write the theme code and image and video models make the ad visuals; I review and approve the code and select and edit the visuals, or send them back; credentials, bank details and identity are never delegated.">
+</picture>
 
-**The release loop** — every batch is logged: state before, state after and the command to roll back.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/ecommerce/release-loop-dark.svg">
+  <img src="./assets/ecommerce/release-loop-light.svg" width="600" alt="The release loop: describe the change, agent writes the code, restore point, my review, publish one file at a time, live test; anything off goes back to the start, and every batch is logged with the rollback command.">
+</picture>
 
-```mermaid
-flowchart LR
-    A["I describe the change<br/>goal, constraints, language"]:::mine --> B["Agent writes<br/>the code"]
-    B --> C["Restore point<br/>copy of the live theme"]
-    C --> D{"I review<br/>and accept"}:::mine
-    D -->|send back| B
-    D -->|accepted| E["Publish<br/>one file at a time"]
-    E --> F["Live testing<br/>pages, cart, Lighthouse"]:::mine
-    F -->|something is off| A
-    classDef mine fill:#1d6b58,stroke:#1d6b58,color:#ffffff
-```
-
-**How changes are verified**
-
-```mermaid
-flowchart LR
-    T["My tests<br/>on the live shop"]:::mine --> D["Defect"]
-    U["Pre-launch audits<br/>Lighthouse, every URL,<br/>every resource, third-party scripts"] --> D
-    D --> F["Agent codes<br/>the fix"]
-    F --> V{"I validate it<br/>on the live shop"}:::mine
-    V -->|not fixed| F
-    V -->|fixed| W["Written rule in the project notes<br/>when the defect could come back"]
-    classDef mine fill:#1d6b58,stroke:#1d6b58,color:#ffffff
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/ecommerce/verification-dark.svg">
+  <img src="./assets/ecommerce/verification-light.svg" width="600" alt="How changes are verified: my tests and pre-launch audits surface defects, an agent codes the fix, I validate it on the live shop, and a rule is written down when the defect could come back.">
+</picture>
 
 - Working rules written for the agents: nothing goes live without my approval; one file at a time, so the shop settings are never overwritten; a full copy of the live theme before every batch; nothing private in the files served; credentials, bank details and identity handled by me alone.
-- What testing caught: images broken on a translated version (the translation tool was renaming file names stored in text settings), a language choice overridden by automatic detection, a cart that reloaded the whole page after a server error, and personal data re-inserted into an auto-generated legal page. Each one was fixed by the agent and validated by me on the live shop.
 - Pre-launch audit: 29 URLs returning the expected 200, 301 and 404 responses, 293 resources loaded across three pages without a single 404, and no third-party scripts.
 - Lighthouse mobile, in lab conditions: accessibility 100, SEO 100, performance between 52 and 76.
 - Domains, payments and translated versions live in September 2026, and the first real, paid orders the same month.
