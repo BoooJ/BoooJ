@@ -22,6 +22,34 @@ Import match demos and get a 2D and 3D replay, team and player analytics, scouti
 
 **My role:** defining the product with my team, prioritizing features and directing the work with AI coding assistance (specs, test-first plans, independent reviews), then deploying and running it in production. The repository explains the architecture and how it was built.
 
+## Featured project — Sightline mobile
+
+**The pocket companion to Sightline, designed around the moments a player actually picks up their phone.**
+
+Before the match, prepare for the opponent; right after it, read your own debrief; during practice, keep a map's grenades in view next to the keyboard; over time, follow your progress. Same accounts and same data as the web app, plus a notebook for the team's strategies and personal notes.
+
+[Explore the source code →](https://github.com/BoooJ/sightline/tree/main/mobile) (the `mobile/` folder of the Sightline repository)
+
+<p>
+  <img src="./assets/sightline-mobile/aujourdhui.webp" width="180" alt="Today screen: a review-ready card for the last match, a prep card for the next opponent with the maps, recent form and a grenade shortcut.">
+  <img src="./assets/sightline-mobile/preparation.webp" width="180" alt="Opponent prep on Inferno: stat tiles and key points, each with a reliability indicator.">
+  <img src="./assets/sightline-mobile/bilan.webp" width="180" alt="Match review: rating, K-D, ADR and KAST against the player's average, then the three costliest deaths.">
+  <img src="./assets/sightline-mobile/lineup.webp" width="180" alt="Lineup sheet: zoomed radar with the trajectory, vertical and horizontal angles and a copy-command button.">
+</p>
+
+<sub>Demo mode, iPhone format: public professional matches embedded in the app, no account needed.</sub>
+
+- Expo SDK 58, React Native and expo-router in TypeScript, with TanStack Query and Reanimated.
+- One codebase, two free channels: an installable web app served by the Sightline backend, and an Android APK built in the cloud with EAS. No app-store fees.
+- A home screen that knows what moment it is: the next match comes first with a countdown, and a debrief less than 24 hours old goes ahead of everything else.
+- Opponent prep where every figure shows its reliability and sample size, so two rounds are never presented as a trend.
+- Grenade lineups made for a phone propped next to the keyboard: the screen stays on, the angles are large and the practice command copies in one tap.
+- Upcoming matches with the opponent's likely maps, shown in each team member's local time.
+- Accessible by design: screen-reader labels, a one-sentence summary for every chart, and simple fades instead of motion when the user asks for less animation.
+- Unit tests on the app's logic (Vitest), and a demo that weighs about 400 KB of embedded data.
+
+**My role:** product and UI/UX design (moments of use, screens, visual system), the specification, verification and release. The code is written by AI agents (Claude Code); the first version went live in two days.
+
 ## Featured project — Mangathèque
 
 **A self-hosted manga reader for my household, installable on iPhone, iPad and PC.**
